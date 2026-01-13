@@ -6,7 +6,7 @@ import {
   FaArrowRight,
   FaChevronDown,
 } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import {AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,9 +47,11 @@ const Navbar = () => {
                     : "border-slate-800 bg-transparent"
                 }`}
               >
-                <FaFeather
-                  className={`transition-colors duration-500 ${
-                    scrolled ? "text-white" : "text-slate-800"
+                <img
+                  src="/vrinda.jpg"
+                  alt="Feather Logo"
+                  className={`w-full h-full transition-all duration-500 ${
+                    scrolled ? "invert" : ""
                   }`}
                 />
               </div>
@@ -62,7 +64,7 @@ const Navbar = () => {
                   scrolled ? "text-slate-900" : "text-slate-900"
                 }`}
               >
-                PULP<span className="text-red-600">&</span>MILL
+                VRINDA<span className="text-red-600">&</span>PAPER
               </span>
               <span className="text-[8px] font-bold uppercase tracking-[0.3em] text-slate-400">
                 Premium Standard
