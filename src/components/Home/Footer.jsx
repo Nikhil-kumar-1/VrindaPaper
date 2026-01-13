@@ -191,7 +191,7 @@ const Footer = () => {
         {/* 4. BOTTOM BAR */}
         <div className="border-t border-slate-900 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] font-bold uppercase tracking-widest">
           <p className="text-slate-600">
-            © {currentYear} Pulp & Mill Industries.{" "}
+            © {currentYear} VrindaPaper Industries.{" "}
             <span className="text-slate-800 ml-2 italic">
               Crafted by Artisans.
             </span>

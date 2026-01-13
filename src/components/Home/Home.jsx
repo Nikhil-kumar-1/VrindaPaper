@@ -5,12 +5,16 @@ import ServicesSection from "./ServiceSection";
 import SustainabilitySection from "./Sustainability";
 import GetInTouchPage from "./GetInTouch";
 import Footer from "./Footer";
-import HeroSection from "./Hero";
+import HeroManager from "./HeroMain";
+
+// import HeroSection from "./Hero";
 
 const Home = () => {
   return <div>
           <Navbar/>
-          <HeroSection />
+          {/* <HeroSection /> */}
+          
+          <HeroManager />
           <AboutPage />
           <ServicesSection />
           <SustainabilitySection />

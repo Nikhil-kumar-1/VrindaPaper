@@ -76,7 +76,7 @@ const AboutSection = () => {
               <p className="text-lg text-slate-600 mb-10 leading-relaxed font-light">
                 Founded on the principles of traditional papermaking,{" "}
                 <span className="font-bold text-slate-900 underline decoration-red-600 decoration-2 underline-offset-4">
-                  Pulp & Mill
+                  VrindaPaper
                 </span>{" "}
                 has evolved into a global leader.
               </p>
