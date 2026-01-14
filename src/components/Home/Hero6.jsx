@@ -21,9 +21,9 @@ const JoeleUltimatePage = () => {
     <div ref={containerRef} className="bg-white font-sans overflow-x-hidden">
       {/* 1. FIXED NAVBAR */}
       <nav className="fixed top-0 w-full z-[100] flex justify-between items-center px-10 py-8 bg-white border-b border-gray-100">
-        <div className="flex flex-col leading-none font-black text-2xl tracking-tighter">
-          <span>JOELE</span>
-          <span className="text-green-500">FRANK</span>
+        <div className="flex  leading-none font-black text-2xl tracking-tighter">
+          <span>Vrinda</span>
+          <span className="text-red-500"> Paper</span>
         </div>
         <div className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
           MENU
