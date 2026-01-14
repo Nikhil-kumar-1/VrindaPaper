@@ -1,46 +1,41 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
-const JoeleFinalScrollPage = () => {
+const JoeleUltimatePage = () => {
   const containerRef = useRef(null);
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // REVERSED LOGIC:
-  // 0 scroll par position 0% (Center mein dikhega)
-  // 0.3 scroll hote hi position -100% (Navbar ke peeche chala jayega)
+  // Parallax: Niche scroll karne par text Navbar ke piche jayega
   const textY = useTransform(scrollYProgress, [0, 0.3], ["0%", "-120%"]);
+  const videoScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.15]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.4, 0.5], [1, 1, 0]);
 
-  // Video halki zoom hogi jab text upar jayega
-  const videoScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.1]);
-  const videoOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.4, 0.5],
-    [1, 1, 0.8]
-  );
+  // Direct Video MP4 Link (High Quality Traffic/City)
+  const videoLink =
+    "https://videos.pexels.com/video-files/857267/857267-hd_1920_1080_24fps.mp4";
 
   return (
     <div ref={containerRef} className="bg-white font-sans overflow-x-hidden">
-      {/* 1. FIXED NAVBAR (Iska z-index sabse zyada hai taaki text iske peeche chhup sake) */}
+      {/* 1. FIXED NAVBAR */}
       <nav className="fixed top-0 w-full z-[100] flex justify-between items-center px-10 py-8 bg-white border-b border-gray-100">
         <div className="flex flex-col leading-none font-black text-2xl tracking-tighter">
           <span>JOELE</span>
           <span className="text-green-500">FRANK</span>
         </div>
-        <div className="font-bold text-xs tracking-widest uppercase cursor-pointer">
+        <div className="font-bold text-[10px] tracking-widest uppercase cursor-pointer">
           MENU
         </div>
       </nav>
 
       {/* 2. HERO SECTION */}
-      <section className="relative h-[150vh] w-full bg-white">
+      <section className="relative h-[160vh] w-full bg-black">
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-          {/* Background Video Layer */}
+          {/* Background Video */}
           <motion.div
-            style={{ scale: videoScale, opacity: videoOpacity }}
+            style={{ scale: videoScale, opacity: heroOpacity }}
             className="absolute inset-0 z-0"
           >
             <video
@@ -48,105 +43,82 @@ const JoeleFinalScrollPage = () => {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover brightness-50"
             >
-              <source
-                src="https://videos.pexels.com/video-files/853826/853826-hd_1920_1080_25fps.mp4"
-                type="video/mp4"
-              />
+              <source src={videoLink} type="video/mp4" />
             </video>
+            <div className="absolute inset-0 bg-black/20"></div>
           </motion.div>
 
-          {/* Masked Text: Niche scroll karne par ye Navbar (z-100) ke peeche chala jayega */}
+          {/* Masked Text Layer */}
           <motion.div
             style={{ y: textY }}
             className="relative z-10 w-full text-center mix-blend-screen bg-white h-full flex items-center justify-center"
           >
-            <h1 className="text-[18vw] md:text-[14vw] font-black leading-[0.85] tracking-tighter uppercase text-black bg-white w-full py-20">
+            {/* IMPORTANT: 
+               1. text-black hona chahiye taaki mix-blend-screen ise transparent window banaye.
+               2. bg-white text ke bahar ka area cover karega.
+            */}
+            <h1 className="text-[18vw] md:text-[15vw] font-black leading-[0.85] tracking-tighter uppercase text-black bg-white w-full py-20">
               TAKE <br /> CONTROL.
             </h1>
           </motion.div>
         </div>
       </section>
 
-      {/* 3. GLOWING TEXT SECTION (Line by Line Reveal) */}
-      <section className="relative z-30 bg-[#0a0a0a] py-40 px-10 md:px-24 shadow-[0_-50px_100px_rgba(0,0,0,0.5)]">
+      {/* 3. TYPEWRITER GLOW SECTION */}
+      <section className="relative z-30 bg-[#0a0a0a] py-48 px-10 md:px-24 shadow-[0_-50px_100px_rgba(0,0,0,0.5)]">
         <div className="max-w-6xl">
-          <motion.span className="text-green-500 font-bold tracking-widest text-xs uppercase mb-10 block">
-            WHO WE ARE
+          <motion.span className="text-green-500 font-bold tracking-[0.4em] text-[10px] uppercase mb-12 block">
+            OUR VISION
           </motion.span>
-
-          {/* Line by line glow reveal component */}
-          <LineRevealText text="We are a strategic communications firm that helps our clients take control in their most critical moments—from bet-the-company situations to the ongoing execution of long-term business goals." />
-        </div>
-
-        {/* STATS SECTION */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mt-40 border-t border-white/10 pt-20">
-          <StatItem number="#1" label="U.S. M&A Advisor" />
-          <StatItem number="104" label="Global Deals 2025" />
-          <StatItem number="$600B+" label="Total Transaction Value" />
+          <TypewriterGlowText text="We illuminate the path to success in a complex world, empowering leaders to navigate challenges with clarity and confidence." />
         </div>
       </section>
 
       {/* 4. FOOTER */}
       <footer className="bg-[#0a0a0a] text-white py-20 px-10 text-center border-t border-white/5">
-        <div className="text-[10vw] font-black tracking-tighter opacity-10 mb-10">
+        <div className="text-[10vw] font-black tracking-tighter opacity-10">
           JOELE FRANK
         </div>
-        <p className="text-green-500 font-bold tracking-[0.3em] uppercase font-mono">
-          Precision. Perspective. Control.
-        </p>
       </footer>
     </div>
   );
 };
 
-// Line by Line Glow Component
-const LineRevealText = ({ text }) => {
+// --- TYPEWRITER GLOW COMPONENT ---
+const TypewriterGlowText = ({ text }) => {
   const words = text.split(" ");
+  const container = useRef(null);
+  const isInView = useInView(container, { once: false, amount: 0.2 });
+
   return (
-    <div className="flex flex-wrap">
+    <div ref={container} className="flex flex-wrap max-w-5xl">
       {words.map((word, i) => (
-        <Word key={i}>{word}</Word>
+        <motion.span
+          key={i}
+          initial={{ opacity: 0.05, filter: "blur(8px)", y: 15 }}
+          animate={
+            isInView
+              ? {
+                  opacity: 1,
+                  filter: "blur(0px) brightness(1.3)",
+                  y: 0,
+                }
+              : {}
+          }
+          transition={{
+            duration: 0.8,
+            delay: i * 0.1,
+            ease: "easeOut",
+          }}
+          className="text-4xl md:text-7xl font-bold text-white mr-[0.3em] mb-4 inline-block tracking-tight"
+        >
+          {word}
+        </motion.span>
       ))}
     </div>
   );
 };
 
-const Word = ({ children }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
-
-  return (
-    <motion.span
-      ref={ref}
-      className="text-4xl md:text-6xl font-medium text-white mr-[0.3em] mb-4 inline-block"
-      animate={{
-        opacity: isInView ? 1 : 0.1,
-        filter: isInView
-          ? "blur(0px) brightness(1.3)"
-          : "blur(4px) brightness(0.5)",
-      }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      {children}
-    </motion.span>
-  );
-};
-
-// Stat Item Component
-const StatItem = ({ number, label }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    className="flex flex-col border-l border-white/20 pl-6"
-  >
-    <span className="text-6xl md:text-8xl font-black text-white">{number}</span>
-    <span className="text-xs text-gray-400 uppercase tracking-[0.2em] mt-4 font-bold">
-      {label}
-    </span>
-  </motion.div>
-);
-
-export default JoeleFinalScrollPage;
+export default JoeleUltimatePage;
