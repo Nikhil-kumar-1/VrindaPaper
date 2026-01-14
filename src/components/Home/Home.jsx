@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
+
 import AboutPage from "./About";
 import ServicesSection from "./ServiceSection";
 import SustainabilitySection from "./Sustainability";
@@ -11,7 +11,7 @@ import HeroManager from "./HeroMain";
 
 const Home = () => {
   return <div>
-          <Navbar/>
+          
           {/* <HeroSection /> */}
           
           <HeroManager />

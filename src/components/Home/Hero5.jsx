@@ -10,7 +10,7 @@ import {
   FaGlobeAmericas,
   FaExpand,
 } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion,AnimatePresence } from "framer-motion";
 
 const Hero5 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
