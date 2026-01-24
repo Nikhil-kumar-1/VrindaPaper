@@ -9,6 +9,7 @@ import Hero2 from "./Hero2";
 import Hero3 from "./Hero3";
 import Hero5 from "./Hero5";
 import Hero6 from "./Hero6";
+import Hero7 from "./Hero7";
 const HeroManager = () => {
   // activeHero state decide karegi kaunsa hero dikhana hai
   const [activeHero, setActiveHero] = useState(1);
@@ -28,6 +29,8 @@ const HeroManager = () => {
         return <Hero5 key="hero-five" />;
       case 6:
         return <Hero6 key="hero-six" />;
+      case 7:
+        return <Hero7 key="hero-seven" />;
       default:
         return <Hero key="hero-main" />;
     }
@@ -142,6 +145,19 @@ const HeroManager = () => {
             <FaBrush size={20} />
             <span className="absolute right-full mr-4 px-3 py-1 bg-slate-900 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
               HeroSix
+            </span>
+          </button>
+          <button
+            onClick={() => setActiveHero(7)}
+            className={`group relative w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+              activeHero === 7
+                ? "bg-red-600 text-white scale-110 shadow-lg shadow-red-200"
+                : "bg-slate-100 text-slate-400 hover:bg-slate-200"
+            }`}
+          >
+            <FaBrush size={20} />
+            <span className="absolute right-full mr-4 px-3 py-1 bg-slate-900 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              Hero Seven
             </span>
           </button>
         </div>

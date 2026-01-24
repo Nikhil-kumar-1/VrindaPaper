@@ -6,14 +6,14 @@ import SustainabilitySection from "./Sustainability";
 import GetInTouchPage from "./GetInTouch";
 import Footer from "./Footer";
 import HeroManager from "./HeroMain";
-
+import Navbar from "../Navbar/Navbar"
 // import HeroSection from "./Hero";
 
 const Home = () => {
   return <div>
           
           {/* <HeroSection /> */}
-          
+          <Navbar />
           <HeroManager />
           <AboutPage />
           <ServicesSection />
